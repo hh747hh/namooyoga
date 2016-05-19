@@ -12,30 +12,45 @@
 <body>
 
 
-<header>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-      <a class="navbar-brand" href="#featured">Wisdom <span class="subhead">Pet Medicine</span></a>
-    </div><!--navbar-header -->
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#featured">Home</a></li>
-        <li ><a href="#mission">Mission</a></li>
-        <li "><a href="#services">Services</a></li>
-        <li><a href="#staff">Staff</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-      </ul>
-    </div><!-- container -->
-  </nav>
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#featured">Wisdom <span class="subhead">Pet Medicine</span></a>
+        </div><!--navbar-header -->
+        <div class="collapse navbar-collapse" id="collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#featured">Home</a></li>
+            <li ><a href="#mission">Mission</a></li>
+            <li "><a href="#services">Services</a></li>
+            <li><a href="#staff">Staff</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+          </ul>
+        </div><!-- collapse navbar-collapse -->
+      </div><!-- container -->
+    </nav>
 
-  <div class="carousel">
-    <img src="images/carousel-lifestyle.jpg" alt="Lifestyle Photo">
-    <img src="images/carousel-mission.jpg" alt="Mission">
-    <img src="images/carousel-vaccinations.jpg" alt="Vaccinations">
-    <img src="images/carousel-fish.jpg" alt="Fish">
-    <img src="images/carousel-exoticanimals.jpg" alt="Exotic Animals">
-  </div>
-</header>
+    <div class="carousel slide" data-ride="carousel" id="featured">
+      <div class="carousel-inner">
+        <div class="item active"><img src="images/carousel-lifestyle.jpg" alt="Lifestyle Photo"></div>
+        <div class="item"><img src="images/carousel-mission.jpg" alt="Mission"></div>
+        <div class="item"><img src="images/carousel-vaccinations.jpg" alt="Vaccinations"></div>
+        <div class="item"><img src="images/carousel-fish.jpg" alt="Fish"></div>
+        <div class="item"><img src="images/carousel-exoticanimals.jpg" alt="Exotic Animals"></div>
+      </div><!-- carousel inner -->
+      <a class="left carousel-control" href="#featured" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></a>
+      <a class="right carousel-control" href="#featured" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></a>
+
+
+    </div><!-- featured carousel slide -->
+
+  </header>
 
 <div class="main">
   <div class="page " id="mission">
@@ -156,16 +171,25 @@
 </div><!-- main -->
 
 <footer>
-  <div class="content container">
-  <div>Call us toll-free at <span class="phone">888-555-1212</span></div>
-  <nav>
-    <ul>
-      <li><a href="#">Terms of use</a></li>
-      <li><a href="#">Privacy policy</a></li>
-    </ul>
-  </nav>
-  <p>All contents &copy; 2014 <a href="http://lynda.com">Lynda.com</a>. All rights reserved.</p>
-</div><!-- content container-->
+  <div class="content container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Call us toll-free at <span class="phone">888-555-1212</span></p>
+        <p>All contents &copy; 2014 <a href="http://lynda.com">Lynda.com</a>. All rights reserved.</p>
+      </div><!-- col-sm-6 -->
+
+      <div class="col-sm-6">
+        <nav class="navbar navbar-default" role="navigation">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Terms of use</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+
+        </nav>
+      </div><!-- col-sm-6 -->
+
+    </div><!-- row -->
+  </div><!-- content container-->
 </footer>
 
 
