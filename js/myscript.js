@@ -2,9 +2,33 @@ $(function() {
 
   "use strict";
 
-  var topoffset = 50; // variable for menu height
+  var topoffset = 50; //variable for menu height
+  var slideqty = $('#featured .item').length;
+  var wheight = $(window).height(); //get the height of the window
+  var randSlide = Math.floor(Math.random()*slideqty);
 
-  //Active Scrollspy
+  $('#featured .item').eq(randSlide).addClass('active');
+
+
+  $('.fullheight').css('height', wheight); //set to window tallness
+
+
+  //replace IMG inside carousels with a background image
+  $('#featured .item img').each(function() {
+    var imgSrc = $(this).attr('src');
+    $(this).parent().css({'background-image': 'url('+imgSrc+')'});
+    $(this).remove();
+  });
+
+  //adjust height of .fullheight elements on window resize
+  $(window).resize(function() {
+    wheight = $(window).height(); //get the height of the window
+    $('.fullheight').css('height', wheight); //set to window tallness
+  });
+
+
+
+  //Activate Scrollspy
   $('body').scrollspy({
     target: 'header .navbar',
     offset: topoffset
@@ -12,25 +36,25 @@ $(function() {
 
   // add inbody class
   var hash = $(this).find('li.active a').attr('href');
-  if(hash !== '#featured'){
+  if(hash !== '#featured') {
     $('header nav').addClass('inbody');
   } else {
     $('header nav').removeClass('inbody');
   }
 
 
-// Add an inbody class to nav when scrollspy event fires
+  // Add an inbody class to nav when scrollspy event fires
+  $('.navbar-fixed-top').on('activate.bs.scrollspy', function() {
+    var hash = $(this).find('li.active a').attr('href');
+    if(hash !== '#featured') {
+      $('header nav').addClass('inbody');
+    } else {
+      $('header nav').removeClass('inbody');
+    }
+  });
 
-$('.navbar-fixed-top').on('activate.bs.scrollspy', function(){
-  var hash = $(this).find('li.active a').attr('href');
-  if(hash !== '#featured'){
-    $('header nav').addClass('inbody');
-  } else {
-    $('header nav').removeClass('inbody');
-  }
-});
 
-//Use smooth scrolling when clicking on navigation
+  //Use smooth scrolling when clicking on navigation
   $('.navbar a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') ===
       this.pathname.replace(/^\//,'') &&
@@ -46,8 +70,25 @@ $('.navbar-fixed-top').on('activate.bs.scrollspy', function(){
     } //click function
   }); //smooth scrolling
 
-  $('.carousel').carousel({
-    interval: false
+  //Automatically generate carousel indicators
+  for (var i=0; i < slideqty; i++) {
+    var insertText = '<li data-target="#featured" data-slide-to="' + i + '"';
+    if (i === randSlide) {
+      insertText += ' class="active" ';
+    }
+    insertText += '></li>';
+    $('#featured ol').append(insertText);
+  }
+
+  var $table = $('.table');
+  var $fixedColumn = $table.clone().insertBefore($table).addClass('fixed-column');
+
+  $fixedColumn.find('th:not(:first-child),td:not(:first-child)').remove();
+
+  $fixedColumn.find('tr').each(function (i, elem) {
+      $(this).height($table.find('tr:eq(' + i + ')').height());
   });
+
+
 
 });
