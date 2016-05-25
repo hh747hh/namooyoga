@@ -87,13 +87,9 @@ header .navbar-default .navbar-toggle .icon-bar {
 and (max-width: 768px) {
   header .navbar-collapse.in {
     background-color: rgba(0,0,0, .5);
-  .google-map {
-    width:100%;
-  }
-
-
   }
 }
+
 
 /**  nav inbody **/
 
